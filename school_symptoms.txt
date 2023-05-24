@@ -12,7 +12,7 @@ Problems remembering the sequence of things
 ---Simple remembering puzzle
 
 Difficulty seeing (and occasionally hearing) similarities and differences in letters and words
----u,n,p,,q,b,d,m,w,s,z
+---u,n,p,q,b,d,m,w,s,z
 
 Difficulty spelling
 ---done 
