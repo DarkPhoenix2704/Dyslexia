@@ -20,9 +20,6 @@ import time
 
 from abydos.phonetic import Soundex, Metaphone, Caverphone, NYSIIS
 
-# '''-------------------------------------------------------------------------------------------------------------------------------------------------------------------------'''
-
-
 def levenshtein(s1, s2):
     if len(s1) < len(s2):
         return levenshtein(s2, s1)
@@ -275,7 +272,7 @@ Though there's no cure for dyslexia, early assessment and intervention result in
 Sometimes dyslexia goes undiagnosed for years and isn't recognized until adulthood, but it's never 
 too late to seek help.""")
 
-    img1 = Image.open("img1.jpg")
+    img1 = Image.open("images/img1.jpg")
     st.image(img1)
 
     st.subheader("Dyslexia- India")
@@ -306,12 +303,12 @@ with tab2:
             st.write("Please review the image selected")
             st.write(image.name)
             image_uploaded = Image.open(image)
-            image_uploaded.save("temp.jpg")
+            image_uploaded.save("images/temp.jpg")
             st.image(image_uploaded, width=224)
 
         if st.button("Predict", help="click after uploading the correct image"):
             try:
-                feature_array = get_feature_array("temp.jpg")
+                feature_array = get_feature_array("images/temp.jpg")
                 result = score(feature_array)
                 if result[0] == 1:
                     st.write("From the tests on this handwriting sample there is very slim chance that this person is sufferning from dyslexia or dysgraphia")
@@ -630,24 +627,14 @@ with tab5:
     Different people are affected to different degrees.
     The common symptoms include: Frequently making the same kinds of mistakes, like reversing letters, Having poor spelling, like spelling the same word correctly and 
     incorrectly in the same exercise, Having trouble remembering how words are spelled and applying spelling rules in writing, etc.
-
     Based on the spelling, grammatic, contextual and phonetics error the app predicts whether the person with the wrting has 
     dyslexia or not. 
     """)
     st.subheader("Average corrections is less for a non-dyslexic child when compared to dyslexic child")
-    st.image("percentage_of_corrections.jpg")
+    st.image("images/percentage_of_corrections.jpg")
     
     st.subheader("Spelling accuracy for a dyslexic and a non-dyslexic child")
-    st.image("spelling_accuracy.jpg")
+    st.image("images/spelling_accuracy.jpg")
     
     st.subheader("Average Phonetic accuracy comparision between a dyslexic and a non-dyslexic child ")
-    st.image("percentage_of_phonetic_accuraccy.jpg")
-
-    
-    
-    # feature_array = get_feature_array("temp.jpg")
-    # result = score(feature_array)
-    # if result[0] == 1:
-    #     st.write("from the tests on this handwriting sample there is very slim chance that this person is sufferning from dyslexia or dysgraphia")
-    # else:
-    #     st.write("from the tests on this handwriting sample there is very high chance that this person is sufferning from dyslexia or dysgraphia")
+    st.image("images/percentage_of_phonetic_accuraccy.jpg")
