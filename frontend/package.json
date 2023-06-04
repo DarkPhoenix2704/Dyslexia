@@ -10,10 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cleandersonlobo/react-mic": "^1.2.0",
     "react": "^18.2.0",
+    "react-audio-recorder": "^2.2.0",
+    "react-audio-voice-recorder": "^1.1.7",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.59.0",

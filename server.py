@@ -5,6 +5,8 @@ import wave
 import pickle as pkl
 import speech_recognition as sr
 import eng_to_ipa as ipa
+import soundfile
+import os
 
 
 app = Flask(__name__)
@@ -66,14 +68,12 @@ def main():
     f = request.files['file']
     seconds = request.form['seconds']
     string_displayed = request.form['string_displayed']
-    audio = io.BytesIO(f.read())
-    # this is my table of chunks of audio data
-    full_audio_bytes = b''.join(audio)
-    with wave.open("temp.wav", "wb") as audiofile:
-        audiofile.setsampwidth(4)
-        audiofile.setnchannels(1)
-        audiofile.setframerate(48000)
-        audiofile.writeframes(full_audio_bytes)
+
+    f.save('temp.opus')
+    f.seek(0)
+    os.system(f'ffmpeg -i "temp.opus" -vn "temp.wav"')
+
+    os.remove('temp.opus')
 
     string_pronounced = predict("temp.wav")
 
@@ -81,8 +81,9 @@ def main():
         string_displayed, string_pronounced)/len(string_displayed)
 
     result = isDyslexic(pronounciation_inaccuracy, seconds)
+    os.remove('temp.wav')
 
-    return jsonify({"isDyslexic": result})
+    return jsonify({"isDyslexic": result, "pronounciation_inaccuracy": pronounciation_inaccuracy})
 
 
 if __name__ == '__main__':
