@@ -4,7 +4,6 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 import pickle as pkl
-import matplotlib.pyplot as plt
 
 
 train_data = pd.read_csv("train.csv")
@@ -34,5 +33,5 @@ model_rfc.fit(x_train.values, y_train.values)
 
 pkl.dump(model_rfc, open("model.pkl", 'wb'))
 
-model = pkl.load(open("model.pkl", 'rb'))
-print(model.predict([[0.12, 6.2]]))
+# model = pkl.load(open("model.pkl", 'rb'))
+# print(model.predict([[0.12, 6.2]]))

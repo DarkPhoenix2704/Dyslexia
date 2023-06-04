@@ -11,7 +11,7 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-model = pkl.load(open("./model.pkl", 'rb'))
+model = pkl.load(open("./ml-model/model.pkl", 'rb'))
 
 
 def isDyslexic(inaccuracy, time):
