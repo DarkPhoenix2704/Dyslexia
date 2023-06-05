@@ -10,7 +10,7 @@ export const VoiceIdentification = () => {
   const controller = useAudioRecorder();
 
   const [isDyslexic, setIsDyslexic] = useState<boolean | null>(null);
-  const [inAccuracy, setInAccuracy] = useState<number | null>(null);
+  // const [inAccuracy, setInAccuracy] = useState<number | null>(null);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -38,7 +38,7 @@ export const VoiceIdentification = () => {
         .json()
         .then((data) => {
           setIsDyslexic(data.isDyslexic);
-          setInAccuracy(data.pronounciation_inaccuracy);
+          // setInAccuracy(data.pronounciation_inaccuracy);
         })
         .finally(() => {
           setIsLoading(false);
@@ -112,7 +112,6 @@ export const VoiceIdentification = () => {
           {isDyslexic === true && "You are Dyslexic"}
           {isDyslexic === false && "You are not Dyslexic"}
           <br />
-          {inAccuracy && `Pronounciation Inaccuracy: ${inAccuracy * 100}%`}
         </h1>
       </div>
     </div>
