@@ -91,21 +91,17 @@ def main():
     f = request.files['file']
     seconds = request.form['seconds']
     string_displayed = request.form['string_displayed']
-
     f.save('temp.opus')
     f.seek(0)
     os.system(f'ffmpeg -i "temp.opus" -vn "temp.wav"')
-
     os.remove('temp.opus')
-
     string_pronounced = predict("temp.wav")
+    os.remove('temp.wav')
 
     pronounciation_inaccuracy = check_pronounciation(
         string_displayed, string_pronounced)/len(string_displayed)
 
     result = isDyslexic(pronounciation_inaccuracy, seconds)
-    os.remove('temp.wav')
-
     return jsonify({"isDyslexic": result, "pronounciation_inaccuracy": pronounciation_inaccuracy})
 
 
@@ -256,7 +252,7 @@ def image_test():
     f.save('temp.jpg')
     feature_array = get_feature_array("temp.jpg")
     isDyslexia = picModel.predict([feature_array])[0]
-
+    os.remove("temp.jpg")
     if isDyslexia: 
         return jsonify({
             "isDyslexic": True
